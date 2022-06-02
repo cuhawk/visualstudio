@@ -1,0 +1,21 @@
+Find exact position of EIP overwrite:
+
+msf-pattern_create -l 2500
+  get number of chars to use in PoC or simply overflow with a high amount of chars (e.g. 5000)
+  use value in EIP at time of overflow in msf-pattern-offset
+msf-pattern_offset -l 2500 -q 33794332/bytes_in_eip
+  shows precise position of EIP
+  
+Be careful of bad chars- even if all bytes to FF are on the stack, some may have been removed before the bytes are placed onto the stack.
+
+
+buffer + EIP + offset + NOP + shellcode
+
+JMP ESP method seems to be very reliable-when used in the above scenario, the instuction results in a jump to our NOP sled.
+
+(from immunity)
+View DLLs used by exe:
+!mona modules
+
+Find JMP ESP in module:
+!mona find -s “\xff\xe4” -m “libspp.dll”

